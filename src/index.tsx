@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
+import registerServiceWorker from './serverWorker'
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 
@@ -17,3 +18,5 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById('root')
 )
+
+registerServiceWorker()
