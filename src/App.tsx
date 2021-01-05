@@ -49,7 +49,12 @@ const App = () => {
               >
                 <>{name}</>
               </Card.Title>
-              <Card.Img variant='top' src={image} style={{ height: '170px' }} />
+              <Card.Img
+                variant='top'
+                src={image}
+                alt='Loading Image'
+                style={{ width: '266.4px', height: '170px' }}
+              />
               <Card.Body>
                 <Card.Text>
                   Some quick example text to build on the card title and make up
