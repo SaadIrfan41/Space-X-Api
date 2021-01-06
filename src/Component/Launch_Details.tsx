@@ -17,7 +17,6 @@ const launch_details = gql`
         site_name_long
       }
       links {
-        video_link
         article_link
         reddit_launch
         wikipedia
@@ -47,15 +46,31 @@ const Launch_Details = ({ match }: Props) => {
         >
           <ListGroup variant='flush'>
             <ListGroupItem>
-              <h4>Name: {data.launch.site_name_long}</h4>
+              {console.log(data.launch.launch_site.site_name_long)}
+              <h4>Name: {data.launch.launch_site.site_name_long}</h4>
             </ListGroupItem>
             <ListGroupItem>
               <h4 style={{ textTransform: 'capitalize' }}>
-                Active: {JSON.stringify(data.launch.launch_success)}
+                Launch Success: {JSON.stringify(data.launch.launch_success)}
               </h4>
             </ListGroupItem>
             <ListGroupItem>
               <h4>Built Year: {data.launch.launch_date_local}</h4>
+            </ListGroupItem>
+            <ListGroupItem>
+              <h3>
+                <a href={data.launch.links.article_link}>Launch Artical</a>
+              </h3>
+            </ListGroupItem>
+            <ListGroupItem>
+              <h3>
+                <a href={data.launch.links.reddit_launch}>Reddit Artical</a>
+              </h3>
+            </ListGroupItem>
+            <ListGroupItem>
+              <h3>
+                <a href={data.launch.links.wikipedia}>Wikipedia Artical</a>
+              </h3>
             </ListGroupItem>
           </ListGroup>
         </Col>
