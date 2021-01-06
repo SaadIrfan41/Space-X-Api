@@ -1,8 +1,7 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { RouteComponentProps } from 'react-router'
 import { useQuery, gql } from '@apollo/client'
 import {
-  Card,
   Col,
   Container,
   Image,
@@ -63,11 +62,8 @@ const Ship_Details = ({ match }: Props) => {
               </h4>
             </ListGroupItem>
             <ListGroupItem>
-              <h4>
-                Active:{' '}
-                {data.ship.avtive
-                  ? JSON.stringify(data.ship.successful_landings)
-                  : 'False'}
+              <h4 style={{ textTransform: 'capitalize' }}>
+                Active: {JSON.stringify(data.ship.active)}
               </h4>
             </ListGroupItem>
             <ListGroupItem>

@@ -24,12 +24,13 @@ const all_ships = gql`
 
 const Ships_page = () => {
   const { loading, error, data } = useQuery(all_ships)
+  console.log(data)
   if (loading) return <Loader />
   if (error) return <h1>Error : </h1>
   return (
     <Fragment>
       <Container style={{ maxWidth: '1240px' }}>
-        <h1 style={{ textAlign: 'center' }}>Welcome To Space X </h1>
+        <h1 style={{ textAlign: 'center' }}>Space x Ships </h1>
 
         <Row className='mx-auto'>
           {data.ships.map(({ id, name, image, active }: proptypes) => (
@@ -64,9 +65,10 @@ const Ships_page = () => {
                     <Card.Title
                       style={{
                         textAlign: 'center',
+                        textTransform: 'capitalize',
                       }}
                     >
-                      Active: {JSON.stringify(active).toUpperCase()}
+                      Active: {JSON.stringify(active)}
                     </Card.Title>
                   </Card.Text>
                   <Link to={`/ship/${id}`}>
