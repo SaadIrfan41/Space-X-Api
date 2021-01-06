@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 interface proptypes {
   id: string
   mission_name: string
-  is_tentative: Boolean
+  launch_success: Boolean
 }
 
 const all_launches = gql`
@@ -15,7 +15,7 @@ const all_launches = gql`
     launchesPast(limit: 20) {
       id
       mission_name
-      is_tentative
+      launch_success
     }
   }
 `
@@ -30,7 +30,7 @@ const Launches_page = () => {
     <Container style={{ maxWidth: '1240px', marginTop: '60px' }}>
       <Row className='mx-auto '>
         {data.launchesPast.map(
-          ({ id, mission_name, is_tentative }: proptypes) => (
+          ({ id, mission_name, launch_success }: proptypes) => (
             <Col key={id} sm={12} md={6} lg={4} xl={3}>
               <Card
                 className='mx-auto'
@@ -44,11 +44,11 @@ const Launches_page = () => {
                 <Card.Title
                   style={{
                     textAlign: 'center',
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
                   }}
                 >
-                  <>{mission_name}</>
+                  <>
+                    <h5>Mission Name:</h5> {mission_name}
+                  </>
                 </Card.Title>
 
                 <Card.Body>
@@ -59,7 +59,7 @@ const Launches_page = () => {
                         textTransform: 'capitalize',
                       }}
                     >
-                      Tenactive: {JSON.stringify(is_tentative)}
+                      Launch Success: {JSON.stringify(launch_success)}
                     </Card.Title>
                   </Card.Text>
                   <Link to={`/launch/${id}`}>

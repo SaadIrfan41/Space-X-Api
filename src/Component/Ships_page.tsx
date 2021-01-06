@@ -24,7 +24,6 @@ const all_ships = gql`
 
 const Ships_page = () => {
   const { loading, error, data } = useQuery(all_ships)
-  console.log(data)
   if (loading) return <Loader />
   if (error) return <h1>Error : </h1>
   return (
