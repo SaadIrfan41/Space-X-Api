@@ -1,74 +1,24 @@
 import React from 'react'
-import './App.css'
-import { useQuery, gql } from '@apollo/client'
-import { Button, Card, Col, Container, Row } from 'react-bootstrap'
-import Loader from './Loader'
-
-interface nodeprops {
-  id: string
-  name: string
-  image: string
-}
-
-const Space_X = gql`
-  {
-    ships(limit: 8) {
-      id
-      image
-      name
-    }
-  }
-`
-
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Launches_page from './Component/Launches_page'
+import Launch_Details from './Component/Launch_Details'
+import Navbar from './Component/Navbar'
+import Rockets_page from './Component/Rockets_page'
+import Rocket_Details from './Component/Rocket_Details'
+import Ships_page from './Component/Ships_page'
+import Ship_Details from './Component/Ship_Details'
 const App = () => {
-  const { loading, error, data } = useQuery(Space_X)
-  if (loading) return <Loader />
-  if (error) return <p>Error : </p>
   return (
-    <Container style={{ maxWidth: '1240px' }}>
-      <h1 style={{ textAlign: 'center' }}>Hello From Space X</h1>
-      {console.log(data.ships)}
-      <Row className='mx-auto'>
-        {data.ships.map(({ id, name, image }: nodeprops) => (
-          <Col key={id} sm={12} md={6} lg={4} xl={3}>
-            <Card
-              className='mx-auto'
-              style={{
-                width: '18rem',
-                padding: '10px',
-                marginTop: '10px',
-                marginBottom: '10px',
-              }}
-            >
-              <Card.Title
-                style={{
-                  textAlign: 'center',
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                }}
-              >
-                <>{name}</>
-              </Card.Title>
-              <Card.Img
-                variant='top'
-                src={image}
-                alt='Loading Image'
-                style={{ width: '266.4px', height: '170px' }}
-              />
-              <Card.Body>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-                <Button style={{ marginLeft: '30px' }} variant='primary'>
-                  Click For Details
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </Container>
+    <Router>
+      <Navbar />
+      <Route path='/ships' component={Ships_page} exact></Route>
+      <Route path='/ship/:id' component={Ship_Details} exact></Route>
+      <Route path='/rockets' component={Rockets_page} exact></Route>
+      <Route path='/rocket/:id' component={Rocket_Details} exact></Route>
+      <Route path='/launches' component={Launches_page} exact></Route>
+      <Route path='/launch/:id' component={Launch_Details} exact></Route>
+    </Router>
   )
 }
+
 export default App
