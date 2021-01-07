@@ -17,10 +17,7 @@ const Header = () => {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mx-auto'>
-            <LinkContainer
-              to='/ships'
-              className='nav-link text-capitalize ml-sm-5'
-            >
+            <LinkContainer to='/' className='nav-link text-capitalize ml-sm-5'>
               <Nav.Link>Ships</Nav.Link>
             </LinkContainer>
             <LinkContainer

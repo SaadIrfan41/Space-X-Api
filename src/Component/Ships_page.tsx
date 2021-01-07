@@ -13,7 +13,7 @@ interface proptypes {
 
 const all_ships = gql`
   {
-    ships(limit: 8) {
+    ships(limit: 14) {
       id
       image
       active
@@ -29,7 +29,15 @@ const Ships_page = () => {
   return (
     <Fragment>
       <Container style={{ maxWidth: '1240px' }}>
-        <h1 style={{ textAlign: 'center' }}>Space x Ships </h1>
+        <h1
+          style={{
+            textAlign: 'center',
+            marginBottom: '20px',
+            marginTop: '20px',
+          }}
+        >
+          Welcome to Space X API{' '}
+        </h1>
 
         <Row className='mx-auto'>
           {data.ships.map(({ id, name, image, active }: proptypes) => (

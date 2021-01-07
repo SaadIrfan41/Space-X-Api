@@ -11,7 +11,7 @@ const App = () => {
   return (
     <Router>
       <Navbar />
-      <Route path='/ships' component={Ships_page} exact></Route>
+      <Route path='/' component={Ships_page} exact></Route>
       <Route path='/ship/:id' component={Ship_Details} exact></Route>
       <Route path='/rockets' component={Rockets_page} exact></Route>
       <Route path='/rocket/:id' component={Rocket_Details} exact></Route>
